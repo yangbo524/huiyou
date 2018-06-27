@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.huiyou.sup</groupId>
+	<artifactId>huiyou-web</artifactId>
+	<packaging>jar</packaging>
+	<name>web</name>
+
+	<parent>
+		<groupId>com.huiyou.sup</groupId>
+		<artifactId>huiyou</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.huiyou.sup</groupId>
+			<artifactId>huiyou-ser</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<!--========================================== -->
+		<!-- 指定resources目录下都为资源文件，需要进行过滤 -->
+		<!--========================================== -->
+		<finalName>platform-web</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/logback.xml</include>
+					<include>**/dubbo-*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+
+
+</project>

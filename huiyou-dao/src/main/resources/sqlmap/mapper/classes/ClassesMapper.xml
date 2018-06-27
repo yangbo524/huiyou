@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.huiyou.sup.dao.classes.ClassesDao">
+
+	<resultMap id="ClassesList" type="com.huiyou.sup.common.bean.Classes">
+		<result column="classcode" property="classCode" jdbcType="VARCHAR"/>
+		<result column="classname" property="classItemName" jdbcType="VARCHAR"/>
+		<collection property="subClassesList" ofType="com.huiyou.sup.common.bean.SubClasses"
+					column="classcode" select="allSubClassesByClassCode">
+			<result column="sub_classcode" property="subClassCode" jdbcType="VARCHAR"/>
+			<result column="sub_classname" property="subClassName" jdbcType="VARCHAR"/>
+		</collection>
+	</resultMap>
+	<resultMap id="SubClassesList" type="com.huiyou.sup.common.bean.SubClasses">
+		<result column="sub_classcode" property="subClassCode" jdbcType="VARCHAR"/>
+		<result column="sub_classname" property="subClassName" jdbcType="VARCHAR"/>
+		<result column="parentcode" property="parentcode" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<select id="allClasses" resultMap="ClassesList">
+		SELECT classcode,
+		classname
+		FROM huiyou_class
+		ORDER BY classcode ASC
+	</select>
+	<select id="allSubClassesByClassCode" resultMap="SubClassesList">
+		SELECT sub_classcode,
+		sub_classname
+		FROM huiyou_sub_class WHERE parentcode = #{classcode}
+	</select>
+
+</mapper>

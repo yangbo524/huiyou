@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.huiyou.sup.dao.index.IndexDao">
+
+	<resultMap id="base_product" type="com.huiyou.sup.common.bean.Product">
+		<result column="productcode" property="productCode" jdbcType="VARCHAR"/>
+		<result column="productname" property="productName" jdbcType="VARCHAR"/>
+		<result column="classcode" property="classCode" jdbcType="VARCHAR"/>
+		<result column="imgurl" property="imgUrl" jdbcType="VARCHAR"/>
+		<result column="price" property="price" jdbcType="VARCHAR"/>
+	</resultMap>
+	<select id="getProductDetail" resultMap="base_product" parameterType="java.lang.String">
+		SELECT *
+		FROM huiyou_product
+		WHERE productcode = #{productCode}
+	</select>
+
+</mapper>
