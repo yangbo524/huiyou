@@ -30,7 +30,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("file:/Users/wangshang/AndroidStudioProjects/springtest/huiyou/weblogic/");
+        registry.addResourceHandler("/**").addResourceLocations("file:/Users/wangshang/AndroidStudioProjects/springtest/huiyou/huiyou/weblogic/");
         super.addResourceHandlers(registry);
     }
 }
